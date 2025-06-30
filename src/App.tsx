@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import Lottie from 'lottie-react';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [animationData, setAnimationData] = useState(null);
 
   useEffect(() => {
     setIsLoaded(true);
+    
+    // Load the Lottie animation
+    fetch('https://lottie.host/6107967e-edbf-4c5e-847f-31ad865c2ce2/jIlxqxcMor.lottie')
+      .then(response => response.json())
+      .then(data => setAnimationData(data))
+      .catch(error => console.log('Animation loading failed:', error));
   }, []);
 
   const tools = [
@@ -17,21 +25,19 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden flex flex-col">
-      {/* Rising Sun Animation */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Sun disc - rises very slowly from bottom */}
-        <div className="absolute -bottom-64 left-1/2 transform -translate-x-1/2">
-          <div className="w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full bg-gradient-radial from-orange-500/8 via-orange-600/4 to-transparent animate-rise-sun-slow"></div>
+      {/* Lottie Animation Background */}
+      {animationData && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+          <div className="w-full h-full max-w-4xl max-h-4xl opacity-30">
+            <Lottie 
+              animationData={animationData}
+              loop={true}
+              autoplay={true}
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
         </div>
-        
-        {/* Subtle sun rays */}
-        <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2">
-          <div className="w-[1000px] h-[500px] bg-gradient-to-t from-orange-500/3 via-orange-600/1 to-transparent animate-pulse-ultra-gentle"></div>
-        </div>
-        
-        {/* Ambient glow at horizon */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-orange-500/2 to-transparent animate-pulse-ultra-gentle"></div>
-      </div>
+      )}
 
       {/* Top Navigation */}
       <header className={`relative z-10 flex justify-end items-center p-6 md:p-8 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
