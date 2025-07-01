@@ -135,10 +135,10 @@ function App() {
   const tools = [
     'Notion', 'Zapier', 'Stripe', 'Google Workspace', 'Slack', 
     'Cursor', 'Calendly', 'Framer', 'Bolt', 'Claude',
-    'Airtable', 'Lovable', 'ChatGPT', 'Microsoft Office Suite',
+    'Airtable', 'Lovable', 'ChatGPT', 'Microsoft Office Suite', 'Windsurf',
     'Notion', 'Zapier', 'Stripe', 'Google Workspace', 'Slack', 
     'Cursor', 'Calendly', 'Framer', 'Bolt', 'Claude',
-    'Airtable', 'Lovable', 'ChatGPT', 'Microsoft Office Suite'
+    'Airtable', 'Lovable', 'ChatGPT', 'Microsoft Office Suite', 'Windsurf'
   ];
 
   return (
