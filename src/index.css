@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Inter:wght@200;300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap');
 
 @layer base {
   * {
@@ -26,20 +26,28 @@
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));
   }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @keyframes rise-sun-slow {
   0% {
-    transform: translateX(-50%) translateY(20%);
-    opacity: 0.6;
+    transform: translateX(-50%) translateY(40%);
+    opacity: 0.7;
   }
   50% {
-    transform: translateX(-50%) translateY(-5%);
+    transform: translateX(-50%) translateY(-10%);
     opacity: 1;
   }
   100% {
-    transform: translateX(-50%) translateY(20%);
-    opacity: 0.6;
+    transform: translateX(-50%) translateY(40%);
+    opacity: 0.7;
   }
 }
 
@@ -61,6 +69,24 @@
   }
 }
 
+@keyframes expand-sun {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(-50%) scale(6);
+    opacity: 0;
+  }
+}
+
+.animate-expand-sun {
+  animation: expand-sun 10s linear infinite;
+}
+
 /* Smooth scrolling and performance */
 html {
   scroll-behavior: smooth;
@@ -70,6 +96,16 @@ body {
   margin: 0;
   background-color: #000000;
   overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background: url('https://www.transparenttextures.com/patterns/noise.png') repeat;
 }
 
 /* Custom selection colors */
@@ -93,4 +129,8 @@ body {
   .animate-scroll-left {
     animation-duration: 25s;
   }
+}
+
+.dm-serif {
+  font-family: 'DM Serif Text', serif;
 }
