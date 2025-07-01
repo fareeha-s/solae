@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ExternalLink, Zap, Settings, Globe, Users } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import teamPhoto from './assets/solae_team_photo.jpg';
 
@@ -10,16 +9,6 @@ const FaviconIcon = ({ size = 24 }: { size?: number }) => (
     <circle cx="50" cy="50" r="20" fill="#E6C15B" />
   </svg>
 );
-
-function HamburgerIcon({ open }: { open: boolean }) {
-  return (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="4" y1="7" x2="20" y2="7" />
-      <line x1="4" y1="12" x2="20" y2="12" />
-      <line x1="4" y1="17" x2="20" y2="17" />
-    </svg>
-  );
-}
 
 // Gold Chevron Button - more minimal and elegant
 const GoldChevron = ({ direction, disabled, onClick }: { direction: 'left' | 'right', disabled: boolean, onClick: () => void }) => (
